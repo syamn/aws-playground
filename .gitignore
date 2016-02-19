@@ -4,6 +4,10 @@
 # Composer
 /vendor/
 
+# Slim 3
+/logs/*
+!/logs/README.md
+
 # Eclipse
 .classpath
 .project
