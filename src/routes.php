@@ -1,6 +1,9 @@
 <?php
 // Routes
 
+// Load library
+require_once __DIR__ . '/library/initialize.php';
+
 // Load all routing files
 $routeFiles = (array) glob(__DIR__.'/routes/*.php');
 foreach($routeFiles as $routeFile) {
