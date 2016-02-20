@@ -23,7 +23,7 @@
 	<tbody>
 	<?php foreach($posts as $post): ?>
 		<tr>
-			<td><?= $post['PostedTime']; ?></td>
+			<td><?= $post['PrettyPostedTime']; ?></td>
 			<td><a href="mailto:<?= h($post['PostedBy']); ?>"><?= h($post['PostedBy']); ?></a></td>
 			<td><?= nl2br(h($post['Body'])); ?></td>
 		</tr>
