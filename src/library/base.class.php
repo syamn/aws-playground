@@ -7,11 +7,11 @@ use Aws\Credentials\CredentialProvider;
 
 class Base{
 
-	public static function getSdk(){
-		return new Sdk([
-			'region'  => 'ap-northeast-1',
-			'version' => 'latest',
-			'credentials' => CredentialProvider::env()
-		]);
-	}
+    public static function getSdk(){
+        return new Sdk([
+            'region' => 'ap-northeast-1',
+            'version' => 'latest',
+            'credentials' => CredentialProvider::env()
+        ]);
+    }
 }

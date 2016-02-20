@@ -1,51 +1,55 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="utf-8"/>
-	<title>DynamoDB</title>
+    <meta charset="utf-8"/>
+    <title>DynamoDB</title>
 </head>
 <body>
 <h1>Click thread to see conversations!</h1>
 <table border="1">
-	<thead>
-		<tr>
-			<th>Title</th>
-			<th>Last Update</th>
-			<th>Num of Posts</th>
-			<th>Created</th>
-		</tr>
-	</thead>
-	<tbody>
-		<?php foreach($threads as $thread): ?>
-			<tr>
-				<td><a href="/dynamodb/threads/<?= h($thread['ThreadName']); ?>/<?= h($thread['CreatedTime']); ?>"><?= h($thread['ThreadName']); ?></a></td>
-				<td><?=h($thread['LastPostedBy']); ?> (<?= h($thread['PrettyLastPostedTime']); ?>)</td>
-				<td><?= (int)$thread['NumPosts']; ?></td>
-				<td><a href="mailto:<?= h($thread['CreatedBy']); ?>"><?= h($thread['CreatedBy']); ?></a> (<?= h($thread['PrettyCreatedTime']); ?>)</td>
-			</tr>
-		<?php endforeach; ?>
-		<?php if (empty($threads)): ?>
-			<tr>
-				<td colspan="4" style="text-align: center"> --[ no threads found ... ]-- </td>
-			</tr>
-		<?php endif; ?>
-	</tbody>
+    <thead>
+    <tr>
+        <th>Title</th>
+        <th>Last Update</th>
+        <th>Num of Posts</th>
+        <th>Created</th>
+    </tr>
+    </thead>
+    <tbody>
+    <?php foreach ($threads as $thread): ?>
+        <tr>
+            <td>
+                <a href="/dynamodb/threads/<?= h($thread['ThreadName']); ?>/<?= h($thread['CreatedTime']); ?>"><?= h($thread['ThreadName']); ?></a>
+            </td>
+            <td><?= h($thread['LastPostedBy']); ?> (<?= h($thread['PrettyLastPostedTime']); ?>)</td>
+            <td><?= (int)$thread['NumPosts']; ?></td>
+            <td><a href="mailto:<?= h($thread['CreatedBy']); ?>"><?= h($thread['CreatedBy']); ?></a>
+                (<?= h($thread['PrettyCreatedTime']); ?>)
+            </td>
+        </tr>
+    <?php endforeach; ?>
+    <?php if (empty($threads)): ?>
+        <tr>
+            <td colspan="4" style="text-align: center"> --[ no threads found ... ]--</td>
+        </tr>
+    <?php endif; ?>
+    </tbody>
 </table>
 <p>(consumed capacity: <?= $consumedCapacity ?>)</p>
 
 <hr>
 <h2>Or... create new thread?</h2>
 <form method="POST">
-	<div>
-		<label>Title<input type="text" name="title" placeholder="Title" required></label>
-	</div>
-	<textarea name="body" id="" cols="30" rows="10" placeholder="Body" required></textarea>
-	<div>
-		<label>Email<input type="email" name="email" placeholder="your email" required></label>
-	</div>
-	<div>
-		<button>Submit</button>
-	</div>
+    <div>
+        <label>Title<input type="text" name="title" placeholder="Title" required></label>
+    </div>
+    <textarea name="body" id="" cols="30" rows="10" placeholder="Body" required></textarea>
+    <div>
+        <label>Email<input type="email" name="email" placeholder="your email" required></label>
+    </div>
+    <div>
+        <button>Submit</button>
+    </div>
 </form>
 </body>
 </html>
